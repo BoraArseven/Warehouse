@@ -363,8 +363,7 @@ since javax.xml.bind has been removed from the JDK -->
                                 <element>METHOD</element>
                                 <excludes>
                                     <exclude>**/generated/**</exclude>
-                                    <exclude>
-                                        *@com.boracompany.mygame.Main.ExcludeFromJacocoGeneratedReport*</exclude>
+
                                 </excludes>
                             </rule>
                         </rules>
@@ -456,6 +455,8 @@ since javax.xml.bind has been removed from the JDK -->
                         <!-- configured in pluginManagement -->
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
+                        <version>0.8.12</version>
+                        
                         <executions>
                             <execution>
                                 <phase>verify</phase>
