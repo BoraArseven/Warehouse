@@ -29,7 +29,7 @@
         <pitest.version>1.16.1</pitest.version>
         <hibernate.version>6.6.3.Final</hibernate.version>
         <sonar-maven-plugin.version>5.0.0.4389</sonar-maven-plugin.version>
-           <guice.version>6.0.0</guice.version>
+           <guice.version>7.0.0</guice.version>
     </properties>
 
 <dependencies>
@@ -70,7 +70,6 @@
 
 
         <dependency>
-
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
@@ -225,7 +224,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        com.boracompany.mygame.main.Main</mainClass>
+                                        com.boracompany.airplanes.app.swing.WarehouseSwingApp</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
@@ -296,7 +295,7 @@ since javax.xml.bind has been removed from the JDK -->
                             Exclude Main folder -->
                             <param>com.boracompany.mygame.orm.*</param><!--
                             Exclude ORM folder -->
-                            <param>com.boracompany.mygame.model.*</param>
+                            <param>com.boracompany.airplanes.model.*</param>
                             <param>com.boracompany.mygame.view.*</param>
                             <param>com.boracompany.mygame.e2e.*</param>
                         </excludedClasses>
@@ -472,29 +471,7 @@ since javax.xml.bind has been removed from the JDK -->
 <profile>
     <id>sonar</id>
     <properties>
-        <!-- Exclude patterns for code coverage -->
-        <sonar.coverage.exclusions>
-            src/main/java/com/boracompany/mygame/model/**/*.java,
-            src/main/java/com/boracompany/mygame/main/**/*.java,
-            src/main/java/com/boracompany/mygame/view/MainMenuView.java,
-            src/main/java/com/boracompany/mygame/orm/HibernatePersistenceUnitInfo.java,
-        </sonar.coverage.exclusions>
 
-        <sonar.cpd.exclusions>
-            src/main/java/com/boracompany/mygame/view/*.java
-        </sonar.cpd.exclusions>
-
-        <!-- Exclude specific SonarQube rules -->
-        <!-- Define multiple criteria keys -->
-        <sonar.issue.ignore.multicriteria>e1,e2</sonar.issue.ignore.multicriteria>
-
-        <!-- Exclude javaarchitecture:S7027 -->
-        <sonar.issue.ignore.multicriteria.e1.ruleKey>javaarchitecture:S7027</sonar.issue.ignore.multicriteria.e1.ruleKey>
-        <sonar.issue.ignore.multicriteria.e1.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e1.resourceKey>
-
-        <!-- Exclude java:S2077 (SQL Injection) -->
-        <sonar.issue.ignore.multicriteria.e2.ruleKey>java:S2077</sonar.issue.ignore.multicriteria.e2.ruleKey>
-        <sonar.issue.ignore.multicriteria.e2.resourceKey>**/*.java</sonar.issue.ignore.multicriteria.e2.resourceKey>
     </properties>
     <build>
         <plugins>
