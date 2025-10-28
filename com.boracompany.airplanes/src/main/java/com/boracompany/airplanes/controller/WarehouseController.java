@@ -1,5 +1,6 @@
 package com.boracompany.airplanes.controller;
 
+import com.boracompany.airplanes.model.Airplane;
 import com.boracompany.airplanes.repository.AirplaneRepository;
 import com.boracompany.airplanes.view.AirplaneView;
 import com.google.inject.Inject;
@@ -18,6 +19,28 @@ public class WarehouseController {
 
     public void allAirplanes() {
         airplaneView.showAllAirplanes(airplaneRepository.findAll());
+    }
+
+    public void newAirplane(Airplane airplane) {
+        Airplane existingAirplane = airplaneRepository.findById(airplane.getId());
+        if (existingAirplane != null) {
+            airplaneView.showError("Already existing airplane with id " + airplane.getId(), existingAirplane);
+            return;
+        }
+        airplaneRepository.save(airplane);
+        airplaneView.airplaneAdded(airplane);
+    }
+
+    public void deleteAirplane(Airplane airplanetoDelete) {
+        if (airplaneRepository.findById(airplanetoDelete.getId()) == null) {
+
+            airplaneView.showErrorAirplaneNotFound("No existing student with id " + airplanetoDelete.getId(),
+                    airplanetoDelete);
+            return;
+        }
+        Airplane selectedAirplane = airplaneRepository.findById(airplanetoDelete.getId());
+        airplaneRepository.delete(selectedAirplane.getId());
+        airplaneView.airplaneRemoved(selectedAirplane);
     }
 
 }
