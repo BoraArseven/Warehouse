@@ -45,7 +45,7 @@ class WarehouseControllerTest {
     }
 
     @Test
-    public void testAllAirplanes() {
+    void testAllAirplanes() {
         List<Airplane> airplanes = Arrays.asList(new Airplane());
         when(airplaneRepository.findAll()).thenReturn(airplanes);
         warehouseController.allAirplanes();
@@ -53,7 +53,7 @@ class WarehouseControllerTest {
     }
 
     @Test
-    public void testNewAirplaneWhenItIsUnique() {
+    void testNewAirplaneWhenItIsUnique() {
         Airplane airplane = new Airplane("1", "test");
         when(airplaneRepository.findById("1")).thenReturn(null);
         warehouseController.newAirplane(airplane);
@@ -65,7 +65,7 @@ class WarehouseControllerTest {
     }
 
     @Test
-    public void testNewAirplaneDuplicateAddition() {
+    void testNewAirplaneDuplicateAddition() {
         Airplane newAirplane = new Airplane("1", "test");
         Airplane existingAirplane = new Airplane("1", "airplane");
         when(airplaneRepository.findById("1")).thenReturn(existingAirplane);
@@ -75,7 +75,7 @@ class WarehouseControllerTest {
     }
 
     @Test
-    public void testDeleteAirplaneWhenAirplaneExists() {
+    void testDeleteAirplaneWhenAirplaneExists() {
         Airplane airplanetoDelete = new Airplane("1", "test");
         when(airplaneRepository.findById("1")).thenReturn(airplanetoDelete);
         warehouseController.deleteAirplane(airplanetoDelete);
@@ -85,7 +85,7 @@ class WarehouseControllerTest {
     }
 
     @Test
-    public void testDeleteAirplaneWhenAirplaneDoesnotExist() {
+    void testDeleteAirplaneWhenAirplaneDoesnotExist() {
         Airplane airplanetoDelete = new Airplane("1", "test");
         when(airplaneRepository.findById("1")).thenReturn(null);
         warehouseController.deleteAirplane(airplanetoDelete);
@@ -93,7 +93,7 @@ class WarehouseControllerTest {
     }
 
     @Test
-    public void testDeleteAirplaneWhenAirplaneDoesnotExistdiffId() {
+    void testDeleteAirplaneWhenAirplaneDoesnotExistdiffId() {
         Airplane airplanetoDelete = new Airplane("2", "test");
         when(airplaneRepository.findById("2")).thenReturn(null);
         warehouseController.deleteAirplane(airplanetoDelete);
