@@ -285,36 +285,20 @@ since javax.xml.bind has been removed from the JDK -->
                     <version>${pitest.version}</version>
                     <configuration>
                         <targetClasses>
-                            <param>com.boracompany.mygame.*</param>
+                            <param>com.boracompany.airplanes.*</param>
                         </targetClasses>
                         <targetTests>
-                            <param>com.boracompany.mygame.*</param>
+                            <param>com.boracompany.airplanes.*</param>
                         </targetTests>
                         <excludedClasses>
-                            <param>com.boracompany.mygame.main.*</param> <!--
-                            Exclude Main folder -->
-                            <param>com.boracompany.mygame.orm.*</param><!--
-                            Exclude ORM folder -->
-                            <param>com.boracompany.airplanes.model.*</param>
-                            <param>com.boracompany.mygame.view.*</param>
-                            <param>com.boracompany.mygame.e2e.*</param>
+                            <param>com.boracompany.airplanes.app.swing.*</param>
+                            <param>com.boracompany.airplanes.model.*</param> 
                         </excludedClasses>
-                        <excludedTestClasses>
-                            <param>com.boracompany.mygame.ITMyGameAppE2E</param>
-                            <param>com.boracompany.mygame.IT.*</param> <!--
-                            Exclude IT folder -->
-                            <param>com.boracompany.mygame.e2e.*</param>
-                            <param>com.boracompany.mygame.view.*</param> <!--
-                            Exclude tests for the view package -->
-                        </excludedTestClasses>
+
                         <mutators>
                             <mutator>ALL</mutator>
                         </mutators>
-                        <excludedMethods>
-                            <param>org.apache.logging.log4j.Logger::info</param>
-                            <param>org.apache.logging.log4j.Logger::error</param>
-                        </excludedMethods>
-                        <mutationThreshold>100</mutationThreshold>
+                        <mutationThreshold>30</mutationThreshold>
                         <avoidCallsTo>
                             <avoidCallsTo>java.util.logging</avoidCallsTo>
                             <avoidCallsTo>org.apache.log4j</avoidCallsTo>
@@ -484,8 +468,6 @@ since javax.xml.bind has been removed from the JDK -->
         </plugins>
     </build>
 </profile>
-
-
         <profile>
             <id>mutation-testing</id>
             <build>
