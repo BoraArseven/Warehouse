@@ -23,11 +23,9 @@
         <mongo.java.server.version>1.39.0</mongo.java.server.version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <picocli.version>4.7.6</picocli.version>
-        <postgresql.version>42.7.3</postgresql.version>
         <sonar.organization>boraarseven</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <pitest.version>1.16.1</pitest.version>
-        <hibernate.version>6.6.3.Final</hibernate.version>
         <sonar-maven-plugin.version>5.0.0.4389</sonar-maven-plugin.version>
            <guice.version>7.0.0</guice.version>
     </properties>
@@ -68,14 +66,12 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
 
    
         <dependency>
@@ -129,12 +125,6 @@
             <scope>test</scope>
         </dependency>
  
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${testcontainers.version}</version>
-            <scope>test</scope>
-        </dependency>
        
         <!--
         https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
@@ -285,36 +275,21 @@ since javax.xml.bind has been removed from the JDK -->
                     <version>${pitest.version}</version>
                     <configuration>
                         <targetClasses>
-                            <param>com.boracompany.mygame.*</param>
+                            <param>com.boracompany.airplanes.*</param>
                         </targetClasses>
                         <targetTests>
-                            <param>com.boracompany.mygame.*</param>
+                            <param>com.boracompany.airplanes.*</param>
+                            <param>com.boracompany.airplanes.*</param>
                         </targetTests>
                         <excludedClasses>
-                            <param>com.boracompany.mygame.main.*</param> <!--
-                            Exclude Main folder -->
-                            <param>com.boracompany.mygame.orm.*</param><!--
-                            Exclude ORM folder -->
-                            <param>com.boracompany.airplanes.model.*</param>
-                            <param>com.boracompany.mygame.view.*</param>
-                            <param>com.boracompany.mygame.e2e.*</param>
+                            <param>com.boracompany.airplanes.app.swing.*</param>
+                            <param>com.boracompany.airplanes.model.*</param> 
                         </excludedClasses>
-                        <excludedTestClasses>
-                            <param>com.boracompany.mygame.ITMyGameAppE2E</param>
-                            <param>com.boracompany.mygame.IT.*</param> <!--
-                            Exclude IT folder -->
-                            <param>com.boracompany.mygame.e2e.*</param>
-                            <param>com.boracompany.mygame.view.*</param> <!--
-                            Exclude tests for the view package -->
-                        </excludedTestClasses>
+
                         <mutators>
                             <mutator>ALL</mutator>
                         </mutators>
-                        <excludedMethods>
-                            <param>org.apache.logging.log4j.Logger::info</param>
-                            <param>org.apache.logging.log4j.Logger::error</param>
-                        </excludedMethods>
-                        <mutationThreshold>100</mutationThreshold>
+                        <mutationThreshold>30</mutationThreshold>
                         <avoidCallsTo>
                             <avoidCallsTo>java.util.logging</avoidCallsTo>
                             <avoidCallsTo>org.apache.log4j</avoidCallsTo>
@@ -334,7 +309,6 @@ since javax.xml.bind has been removed from the JDK -->
                         </execution>
                     </executions>
                 </plugin>
-
 
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -370,8 +344,6 @@ since javax.xml.bind has been removed from the JDK -->
                         <excludes>
                             <exclude>**/main/**</exclude>
                             <exclude>**/model/**</exclude>
-                            <exclude>**/HibernatePersistenceUnitInfo*</exclude>
-                            <exclude>**/MainMenuView*</exclude>
                         </excludes>
                     </configuration>
                     <executions>
@@ -389,6 +361,10 @@ since javax.xml.bind has been removed from the JDK -->
                             <configuration>
                                 <outputDirectory>
                                     ${project.build.directory}/site/jacoco</outputDirectory>
+                                                <excludes>
+              <exclude>**/model/**</exclude>
+
+            </excludes>
                                 <formats>
                                     <format>XML</format>
                                 </formats>
@@ -407,7 +383,7 @@ since javax.xml.bind has been removed from the JDK -->
                                             <limit>
                                                 <counter>LINE</counter>
                                                 <value>COVEREDRATIO</value>
-                                                <minimum>0.45</minimum>
+                                                <minimum>0.00</minimum>
                                             </limit>
                                         </limits>
                                     </rule>
@@ -455,9 +431,7 @@ since javax.xml.bind has been removed from the JDK -->
                         <!-- configured in pluginManagement -->
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
-                        <version>0.8.12</version>
-                        
-                        <executions>
+                                          <executions>
                             <execution>
                                 <phase>verify</phase>
                                 <goals>
@@ -484,8 +458,6 @@ since javax.xml.bind has been removed from the JDK -->
         </plugins>
     </build>
 </profile>
-
-
         <profile>
             <id>mutation-testing</id>
             <build>

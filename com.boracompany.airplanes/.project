@@ -26,5 +26,10 @@
 			<type>2</type>
 			<location>/home/boraarseven/bora-2025-workspace/airplanes/.github</location>
 		</link>
+		<link>
+			<name>.gitignore</name>
+			<type>1</type>
+			<location>/home/boraarseven/bora-2025-workspace/airplanes/.gitignore</location>
+		</link>
 	</linkedResources>
 </projectDescription>

@@ -7,7 +7,6 @@ public class Airplane {
     private String model;
 
     public Airplane() {
-
     }
 
     public Airplane(String id, String model) {
