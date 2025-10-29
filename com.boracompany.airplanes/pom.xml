@@ -289,6 +289,8 @@ since javax.xml.bind has been removed from the JDK -->
                         </targetClasses>
                         <targetTests>
                             <param>com.boracompany.airplanes.*</param>
+                            <param>com.boracompany.airplanes.Controller.*</param>
+                            <param>com.boracompany.airplanes.repository.mongo.*</param>
                         </targetTests>
                         <excludedClasses>
                             <param>com.boracompany.airplanes.app.swing.*</param>
