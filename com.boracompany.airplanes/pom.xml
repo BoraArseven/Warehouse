@@ -23,11 +23,9 @@
         <mongo.java.server.version>1.39.0</mongo.java.server.version>
         <testcontainers.version>1.19.3</testcontainers.version>
         <picocli.version>4.7.6</picocli.version>
-        <postgresql.version>42.7.3</postgresql.version>
         <sonar.organization>boraarseven</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <pitest.version>1.16.1</pitest.version>
-        <hibernate.version>6.6.3.Final</hibernate.version>
         <sonar-maven-plugin.version>5.0.0.4389</sonar-maven-plugin.version>
            <guice.version>7.0.0</guice.version>
     </properties>
@@ -68,14 +66,12 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
 
    
         <dependency>
@@ -129,12 +125,6 @@
             <scope>test</scope>
         </dependency>
  
-        <dependency>
-            <groupId>org.testcontainers</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${testcontainers.version}</version>
-            <scope>test</scope>
-        </dependency>
        
         <!--
         https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
@@ -319,7 +309,6 @@ since javax.xml.bind has been removed from the JDK -->
                         </execution>
                     </executions>
                 </plugin>
-
 
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
