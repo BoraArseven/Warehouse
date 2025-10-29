@@ -289,8 +289,7 @@ since javax.xml.bind has been removed from the JDK -->
                         </targetClasses>
                         <targetTests>
                             <param>com.boracompany.airplanes.*</param>
-                            <param>com.boracompany.airplanes.Controller.*</param>
-                            <param>com.boracompany.airplanes.repository.mongo.*</param>
+                            <param>com.boracompany.airplanes.*</param>
                         </targetTests>
                         <excludedClasses>
                             <param>com.boracompany.airplanes.app.swing.*</param>
@@ -443,7 +442,6 @@ since javax.xml.bind has been removed from the JDK -->
                         <!-- configured in pluginManagement -->
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
-                        <version>0.8.12</version>
                                           <executions>
                             <execution>
                                 <phase>verify</phase>
