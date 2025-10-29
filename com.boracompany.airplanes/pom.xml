@@ -354,8 +354,6 @@ since javax.xml.bind has been removed from the JDK -->
                         <excludes>
                             <exclude>**/main/**</exclude>
                             <exclude>**/model/**</exclude>
-                            <exclude>**/HibernatePersistenceUnitInfo*</exclude>
-                            <exclude>**/MainMenuView*</exclude>
                         </excludes>
                     </configuration>
                     <executions>
@@ -373,6 +371,10 @@ since javax.xml.bind has been removed from the JDK -->
                             <configuration>
                                 <outputDirectory>
                                     ${project.build.directory}/site/jacoco</outputDirectory>
+                                                <excludes>
+              <exclude>**/model/**</exclude>
+
+            </excludes>
                                 <formats>
                                     <format>XML</format>
                                 </formats>
@@ -440,8 +442,7 @@ since javax.xml.bind has been removed from the JDK -->
                         <groupId>org.eluder.coveralls</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
                         <version>0.8.12</version>
-                        
-                        <executions>
+                                          <executions>
                             <execution>
                                 <phase>verify</phase>
                                 <goals>

@@ -1,7 +1,6 @@
 package com.boracompany.airplanes.repository.mongo;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.bson.Document;
@@ -29,7 +28,8 @@ public class AirplaneMongoRepository implements AirplaneRepository {
     public List<Airplane> findAll() {
 
         return StreamSupport.stream(airplaneCollection.find().spliterator(), false).map(this::fromDocumentToAirplane)
-                .collect(Collectors.toList());
+                .toList();
+
     }
 
     private Airplane fromDocumentToAirplane(Document d) {
