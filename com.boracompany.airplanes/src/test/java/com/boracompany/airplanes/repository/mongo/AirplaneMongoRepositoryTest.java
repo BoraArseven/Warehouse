@@ -56,17 +56,17 @@ class AirplaneMongoRepositoryTest {
     }
 
     @AfterEach
-    void tearDown() throws Exception {
+    void tearDown() {
         client.close();
     }
 
     @Test
-    public void testFindAllWhenDatabaseIsEmpty() {
+    void testFindAllWhenDatabaseIsEmpty() {
         assertThat(airplaneRepository.findAll()).isEmpty();
     }
 
     @Test
-    public void testFindALlWhenDatabaseIsNotEmpty() {
+    void testFindALlWhenDatabaseIsNotEmpty() {
 
         addTestAirplaneToDatabase("1", "test1");
         addTestAirplaneToDatabase("2", "test2");
@@ -75,24 +75,24 @@ class AirplaneMongoRepositoryTest {
 
     }
 
-    private void addTestAirplaneToDatabase(String id, String model) {
+    void addTestAirplaneToDatabase(String id, String model) {
         airplaneCollection.insertOne(new Document().append("id", id).append("model", model));
     }
 
     @Test
-    public void testFindByIdNotFound() {
+    void testFindByIdNotFound() {
         assertThat(airplaneRepository.findById("1")).isNull();
     }
 
     @Test
-    public void testFindByIdFound() {
+    void testFindByIdFound() {
         addTestAirplaneToDatabase("1", "test1");
         addTestAirplaneToDatabase("2", "test2");
         assertThat(airplaneRepository.findById("2")).isEqualTo(new Airplane("2", "test2"));
     }
 
     @Test
-    public void testSave() {
+    void testSave() {
         Airplane airplane = new Airplane("1", "added airplane");
         airplaneRepository.save(airplane);
         assertThat(readAllAirplanesFromDatabase()).containsExactly(airplane);
@@ -104,7 +104,7 @@ class AirplaneMongoRepositoryTest {
     }
 
     @Test
-    public void testDelete() {
+    void testDelete() {
         addTestAirplaneToDatabase("1", "test1");
         airplaneRepository.delete("1");
         assertThat(readAllAirplanesFromDatabase()).isEmpty();
