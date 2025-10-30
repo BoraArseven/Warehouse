@@ -31,5 +31,10 @@
 			<type>1</type>
 			<location>/home/boraarseven/bora-2025-workspace/airplanes/.gitignore</location>
 		</link>
+		<link>
+			<name>readme.md</name>
+			<type>1</type>
+			<location>/home/boraarseven/bora-2025-workspace/airplanes/readme.md</location>
+		</link>
 	</linkedResources>
 </projectDescription>
