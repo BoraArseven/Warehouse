@@ -29,7 +29,8 @@
         <sonar-maven-plugin.version>5.0.0.4389</sonar-maven-plugin.version>
              <sonar.coverage.exclusions>
       **/model/*.*,
-      **/WarehouseSwingApp.*
+      **/WarehouseSwingApp.*,
+      **/guice/*.*
     </sonar.coverage.exclusions>
            <guice.version>7.0.0</guice.version>
     </properties>
@@ -341,6 +342,7 @@
                         <excludes>
                             <exclude>**/model/*.*</exclude>
                             <exclude>**/WarehouseSwingApp.*</exclude>
+                            <exclude>**/guice/*.*</exclude>
                         </excludes>
                     </configuration>
                     <executions>
