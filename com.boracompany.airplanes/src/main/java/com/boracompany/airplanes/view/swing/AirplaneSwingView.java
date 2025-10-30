@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.boracompany.airplanes.controller.WarehouseController;
@@ -22,7 +23,7 @@ public class AirplaneSwingView extends JFrame implements AirplaneView {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
-    private WarehouseController warehouseController;
+    private transient WarehouseController warehouseController;
 
     public void start() {
         setVisible(true);
@@ -33,7 +34,7 @@ public class AirplaneSwingView extends JFrame implements AirplaneView {
      * Create the frame.
      */
     public AirplaneSwingView() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
