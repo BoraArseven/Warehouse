@@ -264,9 +264,6 @@
                    <groupId>com.github.hazendaz.maven</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
                     <version>4.5.0</version>
-                    <dependencies>
-
-                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.pitest</groupId>
@@ -283,6 +280,8 @@
                         <excludedClasses>
                             <param>com.boracompany.airplanes.app.swing.*</param>
                             <param>com.boracompany.airplanes.model.*</param> 
+                            <param>com.boracompany.airplanes.guice.*</param>
+                            <param>com.boracompany.airplanes.view.swing.*</param>
                         </excludedClasses>
 
                         <mutators>
@@ -361,9 +360,10 @@
                                 <outputDirectory>
                                     ${project.build.directory}/site/jacoco</outputDirectory>
                                                 <excludes>
-              <exclude>**/model/**</exclude>
-
-            </excludes>
+                            <exclude>**/model/*.*</exclude>
+                            <exclude>**/WarehouseSwingApp.*</exclude>
+                            <exclude>**/guice/*.*</exclude>
+                                  </excludes>
                                 <formats>
                                     <format>XML</format>
                                 </formats>
