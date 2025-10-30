@@ -283,6 +283,8 @@
                         <excludedClasses>
                             <param>com.boracompany.airplanes.app.swing.*</param>
                             <param>com.boracompany.airplanes.model.*</param> 
+                            <param>com.boracompany.airplanes.guice.*</param>
+                            <param>com.boracompany.airplanes.view.swing.*</param>
                         </excludedClasses>
 
                         <mutators>
