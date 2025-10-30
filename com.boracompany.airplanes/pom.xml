@@ -260,17 +260,11 @@
             defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
-                    <groupId>org.eluder.coveralls</groupId>
+                   <groupId>com.github.hazendaz.maven</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
-                    <version>4.3.0</version>
+                    <version>4.5.0</version>
                     <dependencies>
-                        <!-- This is required when using JDK 9 or higher
-since javax.xml.bind has been removed from the JDK -->
-                        <dependency>
-                            <groupId>javax.xml.bind</groupId>
-                            <artifactId>jaxb-api</artifactId>
-                            <version>2.3.1</version>
-                        </dependency>
+
                     </dependencies>
                 </plugin>
                 <plugin>
@@ -432,7 +426,7 @@ since javax.xml.bind has been removed from the JDK -->
                     </plugin>
                     <plugin>
                         <!-- configured in pluginManagement -->
-                        <groupId>org.eluder.coveralls</groupId>
+                        <groupId>com.github.hazendaz.maven</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
                                           <executions>
                             <execution>
