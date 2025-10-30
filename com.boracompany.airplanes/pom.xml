@@ -27,7 +27,10 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <pitest.version>1.16.1</pitest.version>
         <sonar-maven-plugin.version>5.0.0.4389</sonar-maven-plugin.version>
-         <sonar.coverage.exclusions>com/boracompany/airplanes/model/**,com/boracompany/airplanes/app/swing/**</sonar.coverage.exclusions>
+             <sonar.coverage.exclusions>
+      **/model/*.*,
+      **/WarehouseSwingApp.*
+    </sonar.coverage.exclusions>
            <guice.version>7.0.0</guice.version>
     </properties>
 
@@ -338,13 +341,12 @@ since javax.xml.bind has been removed from the JDK -->
                                 <element>METHOD</element>
                                 <excludes>
                                     <exclude>**/generated/**</exclude>
-
                                 </excludes>
                             </rule>
                         </rules>
                         <excludes>
-                            <exclude>**/main/**</exclude>
-                            <exclude>**/model/**</exclude>
+                            <exclude>**/model/*.*</exclude>
+                            <exclude>**/WarehouseSwingApp.*</exclude>
                         </excludes>
                     </configuration>
                     <executions>
