@@ -27,7 +27,10 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <pitest.version>1.16.1</pitest.version>
         <sonar-maven-plugin.version>5.0.0.4389</sonar-maven-plugin.version>
-         <sonar.coverage.exclusions>com/boracompany/airplanes/model/**,com/boracompany/airplanes/app/swing/**</sonar.coverage.exclusions>
+             <sonar.coverage.exclusions>
+      **/model/*.*,
+      **/WarehouseSwingApp.*
+    </sonar.coverage.exclusions>
            <guice.version>7.0.0</guice.version>
     </properties>
 
@@ -257,17 +260,11 @@
             defaults (may be moved to parent pom) -->
             <plugins>
                 <plugin>
-                    <groupId>org.eluder.coveralls</groupId>
+                   <groupId>com.github.hazendaz.maven</groupId>
                     <artifactId>coveralls-maven-plugin</artifactId>
-                    <version>4.3.0</version>
+                    <version>4.5.0</version>
                     <dependencies>
-                        <!-- This is required when using JDK 9 or higher
-since javax.xml.bind has been removed from the JDK -->
-                        <dependency>
-                            <groupId>javax.xml.bind</groupId>
-                            <artifactId>jaxb-api</artifactId>
-                            <version>2.3.1</version>
-                        </dependency>
+
                     </dependencies>
                 </plugin>
                 <plugin>
@@ -338,13 +335,12 @@ since javax.xml.bind has been removed from the JDK -->
                                 <element>METHOD</element>
                                 <excludes>
                                     <exclude>**/generated/**</exclude>
-
                                 </excludes>
                             </rule>
                         </rules>
                         <excludes>
-                            <exclude>**/main/**</exclude>
-                            <exclude>**/model/**</exclude>
+                            <exclude>**/model/*.*</exclude>
+                            <exclude>**/WarehouseSwingApp.*</exclude>
                         </excludes>
                     </configuration>
                     <executions>
@@ -430,7 +426,7 @@ since javax.xml.bind has been removed from the JDK -->
                     </plugin>
                     <plugin>
                         <!-- configured in pluginManagement -->
-                        <groupId>org.eluder.coveralls</groupId>
+                        <groupId>com.github.hazendaz.maven</groupId>
                         <artifactId>coveralls-maven-plugin</artifactId>
                                           <executions>
                             <execution>
