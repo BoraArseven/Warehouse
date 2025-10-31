@@ -1,8 +1,8 @@
 package com.boracompany.airplanes.guice;
 
 import com.boracompany.airplanes.controller.WarehouseController;
-import com.boracompany.airplanes.view.swing.AirplaneSwingView;
+import com.boracompany.airplanes.view.AirplaneView;
 
 public interface WarehouseControllerFactory {
-    WarehouseController create(AirplaneSwingView view);
+    WarehouseController create(AirplaneView view);
 }
