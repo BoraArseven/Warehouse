@@ -3,6 +3,7 @@ package com.boracompany.airplanes.guice;
 import com.boracompany.airplanes.controller.WarehouseController;
 import com.boracompany.airplanes.repository.AirplaneRepository;
 import com.boracompany.airplanes.repository.mongo.AirplaneMongoRepository;
+import com.boracompany.airplanes.view.swing.AirplaneSwingView;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.assistedinject.FactoryModuleBuilder;
@@ -56,4 +57,10 @@ public class AirplaneSwingMongoDefaultModule extends AbstractModule {
         return new MongoClient(host, port);
     }
 
+    @Provides
+    AirplaneSwingView airplaneView(WarehouseControllerFactory warehouseControllerFactory) {
+        AirplaneSwingView airplaneSwingView = new AirplaneSwingView();
+        airplaneSwingView.setWarehouseController(warehouseControllerFactory.create(airplaneSwingView));
+        return airplaneSwingView;
+    }
 }
