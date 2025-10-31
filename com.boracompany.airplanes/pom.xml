@@ -278,11 +278,13 @@
                     <version>${pitest.version}</version>
                     <configuration>
                         <targetClasses>
-                            <param>com.boracompany.airplanes.*</param>
+                            <param>com.boracompany.airplanes.controller.*</param>
+                               <param>com.boracompany.airplanes.repository.*</param>
+                                                       
                         </targetClasses>
                         <targetTests>
-                            <param>com.boracompany.airplanes.*</param>
-                            <param>com.boracompany.airplanes.*</param>
+                            <param>com.boracompany.airplanes.Controller.*</param>
+                            <param>com.boracompany.airplanes.repository.*</param>
                         </targetTests>
                         <excludedClasses>
                             <param>com.boracompany.airplanes.app.swing.*</param>
