@@ -1,14 +1,14 @@
 package com.boracompany.airplanes.view.swing;
 
+import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 
+import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -52,7 +52,7 @@ public class AirplaneSwingView extends JFrame implements AirplaneView {
         getWarehouseController().allAirplanes();
     }
 
-    DefaultListModel<Airplane> getListStudentsModel() {
+    DefaultListModel<Airplane> getListAirplanesModel() {
         return listAirplanesModel;
     }
 
@@ -142,15 +142,24 @@ public class AirplaneSwingView extends JFrame implements AirplaneView {
         scrollPane.setViewportView(list);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setName("airplaneList");
+        list.addListSelectionListener(e -> btnDelete.setEnabled(list.getSelectedIndex() != -1));
+        list.setCellRenderer(new DefaultListCellRenderer() {
+            private static final long serialVersionUID = 1L;
 
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
+                    boolean cellHasFocus) {
+                Airplane student = (Airplane) value;
+                return super.getListCellRendererComponent(list, getDisplayString(student), index, isSelected,
+                        cellHasFocus);
+            }
+        });
         btnDelete = new JButton("Delete");
         btnDelete.setEnabled(false);
         btnDelete.setName("delete");
         btnDelete.setActionCommand("Delete");
-        btnDelete.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-            }
-        });
+        btnDelete.addActionListener(e -> warehouseController.deleteAirplane(list.getSelectedValue()));
+
         GridBagConstraints gbc_btnDelete = new GridBagConstraints();
         gbc_btnDelete.insets = new Insets(0, 0, 5, 0);
         gbc_btnDelete.gridx = 1;
@@ -163,38 +172,50 @@ public class AirplaneSwingView extends JFrame implements AirplaneView {
         gbc_label.gridwidth = 2;
         gbc_label.gridx = 0;
         gbc_label.gridy = 6;
+        btnAdd.addActionListener(
+                e -> warehouseController.newAirplane(new Airplane(txtIdtextfield.getText(), modeltextField.getText())));
+
         contentPane.add(label, gbc_label);
 
     }
 
+    private String getDisplayString(Airplane airplane) {
+        return airplane.getId() + " - " + airplane.getModel();
+    }
+
     @Override
     public void showError(String message, Airplane airplane) {
-        // TODO Auto-generated method stub
+        label.setText(message + ": " + getDisplayString(airplane));
 
     }
 
     @Override
     public void airplaneAdded(Airplane airplane) {
-        // TODO Auto-generated method stub
-
+        listAirplanesModel.addElement(airplane);
+        resetErrorLabel();
     }
 
     @Override
     public void airplaneRemoved(Airplane airplane) {
-        // TODO Auto-generated method stub
+        listAirplanesModel.removeElement(airplane);
+        resetErrorLabel();
 
     }
 
     @Override
     public void showErrorAirplaneNotFound(String message, Airplane airplane) {
-        // TODO Auto-generated method stub
+        label.setText(message + ": " + getDisplayString(airplane));
+        listAirplanesModel.removeElement(airplane);
 
     }
 
     @Override
     public void showAllAirplanes(List<Airplane> airplanes) {
-        // TODO Auto-generated method stub
 
+        airplanes.stream().forEach(listAirplanesModel::addElement);
     }
 
+    private void resetErrorLabel() {
+        label.setText(" ");
+    }
 }
