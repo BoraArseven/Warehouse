@@ -129,6 +129,13 @@
             <scope>test</scope>
         </dependency>
 
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>mongodb</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+
         <!-- JUnit 5 Parameterized Tests -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
