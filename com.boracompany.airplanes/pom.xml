@@ -295,19 +295,17 @@
                             <param>com.boracompany.airplanes.guice.*</param>
                             <param>com.boracompany.airplanes.view.swing.*</param>
                         </excludedClasses>
-                        <excludedMethods>
-                            <param>com.boracompany.airplanes.repository.mongo.AirplaneMongoRepository.findAll</param>
-                        </excludedMethods>
                         <mutators>
                             <mutator>ALL</mutator>
                         </mutators>
-                        <mutationThreshold>30</mutationThreshold>
+                        <mutationThreshold>95</mutationThreshold>
                         <avoidCallsTo>
                             <avoidCallsTo>java.util.logging</avoidCallsTo>
                             <avoidCallsTo>org.apache.log4j</avoidCallsTo>
                             <avoidCallsTo>org.slf4j</avoidCallsTo>
                             <avoidCallsTo>org.apache.commons.logging</avoidCallsTo>
                             <avoidCallsTo>org.apache.logging.log4j</avoidCallsTo>
+                            <avoidCallsTo>com.boracompany.airplanes.repository.mongo.AirplaneMongoRepository.findAll</avoidCallsTo>
                         </avoidCallsTo>
                         <outputFormats>
                             <param>HTML</param>
@@ -396,7 +394,7 @@
                                             <limit>
                                                 <counter>LINE</counter>
                                                 <value>COVEREDRATIO</value>
-                                                <minimum>0.00</minimum>
+                                                <minimum>1.00</minimum>
                                             </limit>
                                         </limits>
                                     </rule>
