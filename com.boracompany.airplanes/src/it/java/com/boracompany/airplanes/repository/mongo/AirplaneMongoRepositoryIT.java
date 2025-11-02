@@ -3,7 +3,6 @@ package com.boracompany.airplanes.repository.mongo;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.bson.Document;
@@ -75,6 +74,7 @@ public class AirplaneMongoRepositoryIT {
 
     private List<Airplane> readAllAirplanesFromDatabase() {
         return StreamSupport.stream(airplaneCollection.find().spliterator(), false)
-                .map(d -> new Airplane("" + d.get("id"), "" + d.get("model"))).collect(Collectors.toList());
+                .map(d -> new Airplane("" + d.get("id"), "" + d.get("model"))).toList();
     }
+
 }

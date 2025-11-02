@@ -2,7 +2,7 @@
 **/bin/
 /target
 bin/
-
+mongo-data/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

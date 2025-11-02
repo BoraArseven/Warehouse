@@ -1,0 +1,23 @@
+services:
+  mongodb:
+    image: mongo:4.4.3
+    volumes:
+      - ./mongo-data:/data/db
+    networks:
+      - my-network
+
+  java_app:
+    build: .
+    depends_on:
+      - mongodb
+    environment:
+      DISPLAY: "${DISPLAY}"
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /run/user/$(id -u)/wayland-0:/run/user/1000/wayland-0:rw
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
