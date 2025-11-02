@@ -3,7 +3,7 @@ Simple warehouse application
 Latest mutation testing report:
 https://boraarseven.github.io/Warehouse/
 
-badges will be added
+Badges:
 
 Coveralls Coverage: [![Coverage Status](https://coveralls.io/repos/github/BoraArseven/Warehouse/badge.svg?branch=main)](https://coveralls.io/github/BoraArseven/Warehouse?branch=main)
 Sonarcloud Coverage: [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=BoraArseven_Warehouse&metric=coverage)](https://sonarcloud.io/summary/new_code?id=BoraArseven_Warehouse)
