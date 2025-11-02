@@ -99,4 +99,5 @@ class WarehouseControllerTest {
         warehouseController.deleteAirplane(airplanetoDelete);
         verify(airplaneView).showErrorAirplaneNotFound("No existing student with id 2", airplanetoDelete);
     }
+
 }

@@ -1,6 +1,7 @@
 package com.boracompany.airplanes.repository.mongo;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.net.InetSocketAddress;
 import java.util.List;
@@ -108,4 +109,24 @@ class AirplaneMongoRepositoryTest {
         airplaneRepository.delete("1");
         assertThat(readAllAirplanesFromDatabase()).isEmpty();
     }
+
+    @Test
+    void testFindAllReturnsMappedAirplanes() {
+        // Arrange: insert known Airplane documents into airplaneCollection
+        Airplane airplane1 = new Airplane("1", "test1");
+        Airplane airplane2 = new Airplane("2", "test2");
+        addTestAirplaneToDatabase(airplane1.getId(), airplane1.getModel());
+        addTestAirplaneToDatabase(airplane2.getId(), airplane2.getModel());
+
+        // Act
+        List<Airplane> result = airplaneRepository.findAll();
+
+        // Assert
+        assertEquals(2, result.size());
+        assertEquals("1", result.get(0).getId());
+        assertEquals("test1", result.get(0).getModel());
+        assertEquals("2", result.get(1).getId());
+        assertEquals("test2", result.get(1).getModel());
+    }
+
 }
