@@ -3,7 +3,7 @@ Simple warehouse application
 To run, please run the start.sh with administrator privileges.
 
 Requirements:
-Docker with compose installed. 
+Java 17, and Docker with compose installed.
 
 Latest mutation testing report:  
 https://boraarseven.github.io/Warehouse/
