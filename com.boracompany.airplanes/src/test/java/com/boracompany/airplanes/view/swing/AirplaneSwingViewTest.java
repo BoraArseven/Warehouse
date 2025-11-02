@@ -1,6 +1,7 @@
 package com.boracompany.airplanes.view.swing;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
@@ -62,21 +63,21 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
     @Test
     @GUITest
     public void testControlsInitialStates() {
-        window.label(JLabelMatcher.withText("id"));
-        window.textBox("idTextBox").requireEnabled();
-        window.label(JLabelMatcher.withText("model"));
-        window.textBox("modelTextBox").requireEnabled();
-        window.button(JButtonMatcher.withText("Add")).requireDisabled();
-        window.list("airplaneList");
-        window.button(JButtonMatcher.withText("Delete")).requireDisabled();
-        window.label("errorLabel").requireText(" ");
+        assertDoesNotThrow(() -> window.label(JLabelMatcher.withText("id")));
+        assertDoesNotThrow(() -> window.textBox("idTextBox").requireEnabled());
+        assertDoesNotThrow(() -> window.label(JLabelMatcher.withText("model")));
+        assertDoesNotThrow(() -> window.textBox("modelTextBox").requireEnabled());
+        assertDoesNotThrow(() -> window.button(JButtonMatcher.withText("Add")).requireDisabled());
+        assertDoesNotThrow(() -> window.list("airplaneList"));
+        assertDoesNotThrow(() -> window.button(JButtonMatcher.withText("Delete")).requireDisabled());
+        assertDoesNotThrow(() -> window.label("errorLabel").requireText(" "));
     }
 
     @Test
     public void testWhenIdAndNameAreNonEmptyThenAddButtonShouldBeEnabled() {
         window.textBox("idTextBox").enterText("1");
         window.textBox("modelTextBox").enterText("test");
-        window.button(JButtonMatcher.withText("Add")).requireEnabled();
+        assertDoesNotThrow(() -> window.button(JButtonMatcher.withText("Add")).requireEnabled());
     }
 
     @Test
@@ -86,14 +87,14 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
 
         idTextBox.enterText("1");
         nameTextBox.enterText(" ");
-        window.button(JButtonMatcher.withText("Add")).requireDisabled();
+        assertDoesNotThrow(() -> window.button(JButtonMatcher.withText("Add")).requireDisabled());
 
         idTextBox.setText("");
         nameTextBox.setText("");
 
         idTextBox.enterText(" ");
         nameTextBox.enterText("test");
-        window.button(JButtonMatcher.withText("Add")).requireDisabled();
+        assertDoesNotThrow(() -> window.button(JButtonMatcher.withText("Add")).requireDisabled());
     }
 
     @Test
@@ -101,7 +102,7 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
         GuiActionRunner.execute(() -> airplaneSwingView.getListAirplanesModel().addElement(new Airplane("1", "test")));
         window.list("airplaneList").selectItem(0);
         JButtonFixture deleteButton = window.button(JButtonMatcher.withText("Delete"));
-        deleteButton.requireEnabled();
+        assertDoesNotThrow(() -> deleteButton.requireEnabled());
         window.list("airplaneList").clearSelection();
         deleteButton.requireDisabled();
     }
@@ -119,7 +120,7 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
     public void testShowErrorShouldShowTheMessageInTheErrorLabel() {
         Airplane airplane = new Airplane("1", "test1");
         GuiActionRunner.execute(() -> airplaneSwingView.showError("error message", airplane));
-        window.label("errorLabel").requireText("error message: 1 - test1");
+        assertDoesNotThrow(() -> window.label("errorLabel").requireText("error message: 1 - test1"));
     }
 
     @Test
