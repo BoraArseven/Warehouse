@@ -44,12 +44,12 @@ public class AirplaneViewIT extends AssertJSwingJUnitTestCase {
     // this will be retrieved from the view
     private WarehouseController warehouseController;
 
-    private static final String AIRPLANE_DB_NAME = "warehouse";
-    private static final String AIRPLANE_COLLECTION_NAME = "airplane";
     private FrameFixture window;
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void onSetUp() {
+
         mongoClient = new MongoClient(new ServerAddress(mongo.getContainerIpAddress(), mongo.getFirstMappedPort()));
         final Module moduleForTesting = Modules.override(new AirplaneSwingMongoDefaultModule())
                 .with(new AbstractModule() {
@@ -58,6 +58,7 @@ public class AirplaneViewIT extends AssertJSwingJUnitTestCase {
                         bind(MongoClient.class).toInstance(mongoClient);
                     }
                 });
+
         final Injector injector = Guice.createInjector(moduleForTesting);
 
         GuiActionRunner.execute(() -> {
@@ -81,12 +82,11 @@ public class AirplaneViewIT extends AssertJSwingJUnitTestCase {
     @Test
     @GUITest
     public void testAllAirplanes() {
-        // use the repository to add students to the database
+
         Airplane airplane1 = new Airplane("1", "test1");
         Airplane airplane2 = new Airplane("2", "test2");
         airplaneRepository.save(airplane1);
         airplaneRepository.save(airplane2);
-        // use the controller's allStudents
         GuiActionRunner.execute(() -> warehouseController.allAirplanes());
         // and verify that the view's list is populated
         assertThat(window.list().contents()).containsExactly("1 - test1", "2 - test2");
