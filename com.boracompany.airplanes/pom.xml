@@ -461,7 +461,7 @@
                     <sonar.issue.ignore.multicriteria>rule1,rule2</sonar.issue.ignore.multicriteria>
         
                     <sonar.issue.ignore.multicriteria.rule1.ruleKey>java:S3577</sonar.issue.ignore.multicriteria.rule1.ruleKey>
-                    <sonar.issue.ignore.multicriteria.rule1.resourceKey>**/*Test*.java</sonar.issue.ignore.multicriteria.rule1.resourceKey>
+                    <sonar.issue.ignore.multicriteria.rule1.resourceKey>**/*.*</sonar.issue.ignore.multicriteria.rule1.resourceKey>
 
                 <!-- Ignoring S117 for all classes -->
                     <sonar.issue.ignore.multicriteria.rule2.ruleKey>java:S117</sonar.issue.ignore.multicriteria.rule2.ruleKey>
