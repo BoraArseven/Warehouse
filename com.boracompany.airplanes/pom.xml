@@ -32,6 +32,7 @@
       **/WarehouseSwingApp.*,
       **/guice/*.*
     </sonar.coverage.exclusions>
+    <!--Ignoring naming rules-->
     <sonar.issue.ignore.multicriteria>rule1</sonar.issue.ignore.multicriteria>
     <sonar.issue.ignore.multicriteria.rule1.ruleKey>java:S3577</sonar.issue.ignore.multicriteria.rule1.ruleKey>
     <sonar.issue.ignore.multicriteria.rule1.resourceKey>**/*Test*.java</sonar.issue.ignore.multicriteria.rule1.resourceKey>
