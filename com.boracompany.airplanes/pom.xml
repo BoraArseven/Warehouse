@@ -298,7 +298,7 @@
                         <mutators>
                             <mutator>ALL</mutator>
                         </mutators>
-                        <mutationThreshold>30</mutationThreshold>
+                        <mutationThreshold>95</mutationThreshold>
                         <avoidCallsTo>
                             <avoidCallsTo>java.util.logging</avoidCallsTo>
                             <avoidCallsTo>org.apache.log4j</avoidCallsTo>
@@ -394,7 +394,7 @@
                                             <limit>
                                                 <counter>LINE</counter>
                                                 <value>COVEREDRATIO</value>
-                                                <minimum>0.00</minimum>
+                                                <minimum>1.00</minimum>
                                             </limit>
                                         </limits>
                                     </rule>
