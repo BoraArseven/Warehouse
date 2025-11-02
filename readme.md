@@ -4,6 +4,7 @@ To run, please run the start.sh with administrator privileges.
 
 Requirements:
 Java 17, and Docker with compose installed.
+Being in insecure networks might prevent docker image from downloading updates.
 
 Latest mutation testing report:  
 https://boraarseven.github.io/Warehouse/
