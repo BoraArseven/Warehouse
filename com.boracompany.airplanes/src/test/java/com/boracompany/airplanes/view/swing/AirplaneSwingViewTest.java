@@ -1,7 +1,9 @@
 package com.boracompany.airplanes.view.swing;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
@@ -63,14 +65,21 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
     @Test
     @GUITest
     public void testControlsInitialStates() {
+        // Check labels exist (there's no direct isEnabled, so keep as
+        // assertDoesNotThrow or check text)
         assertDoesNotThrow(() -> window.label(JLabelMatcher.withText("id")));
-        assertDoesNotThrow(() -> window.textBox("idTextBox").requireEnabled());
+        assertTrue(window.textBox("idTextBox").isEnabled());
+
         assertDoesNotThrow(() -> window.label(JLabelMatcher.withText("model")));
-        assertDoesNotThrow(() -> window.textBox("modelTextBox").requireEnabled());
-        assertDoesNotThrow(() -> window.button(JButtonMatcher.withText("Add")).requireDisabled());
-        assertDoesNotThrow(() -> window.list("airplaneList"));
-        assertDoesNotThrow(() -> window.button(JButtonMatcher.withText("Delete")).requireDisabled());
-        assertDoesNotThrow(() -> window.label("errorLabel").requireText(" "));
+        assertTrue(window.textBox("modelTextBox").isEnabled());
+
+        assertTrue(!window.button(JButtonMatcher.withText("Add")).isEnabled());
+        assertDoesNotThrow(() -> window.list("airplaneList")); // lists don’t have isEnabled in AssertJ/FEST
+
+        assertTrue(!window.button(JButtonMatcher.withText("Delete")).isEnabled());
+
+        // Check error label text
+        assertEquals(" ", window.label("errorLabel").text());
     }
 
     @Test
@@ -102,7 +111,7 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
         GuiActionRunner.execute(() -> airplaneSwingView.getListAirplanesModel().addElement(new Airplane("1", "test")));
         window.list("airplaneList").selectItem(0);
         JButtonFixture deleteButton = window.button(JButtonMatcher.withText("Delete"));
-        assertDoesNotThrow(() -> deleteButton.requireEnabled());
+        assertTrue(deleteButton.isEnabled());
         window.list("airplaneList").clearSelection();
         deleteButton.requireDisabled();
     }

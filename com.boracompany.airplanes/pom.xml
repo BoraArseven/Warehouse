@@ -32,6 +32,11 @@
       **/WarehouseSwingApp.*,
       **/guice/*.*
     </sonar.coverage.exclusions>
+    <sonar.issue.ignore.multicriteria>rule1</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria.rule1.ruleKey>java:S3577</sonar.issue.ignore.multicriteria.rule1.ruleKey>
+    <sonar.issue.ignore.multicriteria.rule1.resourceKey>**/*Test*.java</sonar.issue.ignore.multicriteria.rule1.resourceKey>
+   <sonar.issue.ignore.multicriteria>rule2</sonar.issue.ignore.multicriteria>
+   <sonar.issue.ignore.multicriteria.rule2.ruleKey>java:S117</sonar.issue.ignore.multicriteria.rule2.ruleKey>
            <guice.version>7.0.0</guice.version>
     </properties>
 

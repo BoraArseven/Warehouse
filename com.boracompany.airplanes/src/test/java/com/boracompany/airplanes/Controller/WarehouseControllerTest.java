@@ -35,7 +35,7 @@ class WarehouseControllerTest {
     private AutoCloseable closeable;
 
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp() {
         closeable = MockitoAnnotations.openMocks(this);
     }
 
