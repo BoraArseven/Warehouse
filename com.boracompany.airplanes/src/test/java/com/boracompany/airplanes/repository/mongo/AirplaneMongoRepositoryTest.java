@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.net.InetSocketAddress;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.bson.Document;
@@ -100,7 +99,7 @@ class AirplaneMongoRepositoryTest {
 
     private List<Airplane> readAllAirplanesFromDatabase() {
         return StreamSupport.stream(airplaneCollection.find().spliterator(), false)
-                .map(d -> new Airplane("" + d.get("id"), "" + d.get("model"))).collect(Collectors.toList());
+                .map(d -> new Airplane("" + d.get("id"), "" + d.get("model"))).toList();
     }
 
     @Test
