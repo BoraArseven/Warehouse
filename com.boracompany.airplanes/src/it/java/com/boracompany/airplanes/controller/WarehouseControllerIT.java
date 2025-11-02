@@ -38,8 +38,7 @@ public class WarehouseControllerIT {
 
     private MongoClient client;
 
-    private static int mongoPort = Integer.parseInt(System.getProperty("mongo.port", "27017"));
-
+    @SuppressWarnings("deprecation")
     @Before
     public void setUp() {
         client = new MongoClient(new ServerAddress(mongo.getContainerIpAddress(), mongo.getFirstMappedPort()));
