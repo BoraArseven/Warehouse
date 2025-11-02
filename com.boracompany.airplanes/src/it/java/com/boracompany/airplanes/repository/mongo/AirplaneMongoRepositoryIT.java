@@ -56,7 +56,7 @@ public class AirplaneMongoRepositoryIT {
     }
 
     @Test
-    void testFindAllReturnsMappedAirplanes() {
+    public void testFindAllReturnsMappedAirplanes() {
         // Arrange: insert known Airplane documents into airplaneCollection
         Airplane airplane1 = new Airplane("1", "test1");
         Airplane airplane2 = new Airplane("2", "test2");
