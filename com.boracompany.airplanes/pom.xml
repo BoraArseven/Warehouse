@@ -274,11 +274,11 @@
                         <targetClasses>
                             <param>com.boracompany.airplanes.controller.*</param>
                                <param>com.boracompany.airplanes.repository.*</param>
-                                                       
                         </targetClasses>
                         <targetTests>
                             <param>com.boracompany.airplanes.Controller.*</param>
-                            <param>com.boracompany.airplanes.repository.*</param>
+                            <param>com.boracompany.airplanes.repository.mongo.*</param>
+                            <param>com.boracompany.airplanes.controller.*</param>
                         </targetTests>
                         <excludedClasses>
                             <param>com.boracompany.airplanes.app.swing.*</param>
@@ -286,17 +286,19 @@
                             <param>com.boracompany.airplanes.guice.*</param>
                             <param>com.boracompany.airplanes.view.swing.*</param>
                         </excludedClasses>
+                        <excludedMethods>
+                            <param>com.boracompany.airplanes.repository.mongo.AirplaneMongoRepository.findAll</param>
+                        </excludedMethods>
                         <mutators>
                             <mutator>ALL</mutator>
                         </mutators>
-                        <mutationThreshold>95</mutationThreshold>
+                        <mutationThreshold>100</mutationThreshold>
                         <avoidCallsTo>
                             <avoidCallsTo>java.util.logging</avoidCallsTo>
                             <avoidCallsTo>org.apache.log4j</avoidCallsTo>
                             <avoidCallsTo>org.slf4j</avoidCallsTo>
                             <avoidCallsTo>org.apache.commons.logging</avoidCallsTo>
                             <avoidCallsTo>org.apache.logging.log4j</avoidCallsTo>
-                            <avoidCallsTo>com.boracompany.airplanes.repository.mongo.AirplaneMongoRepository.findAll</avoidCallsTo>
                         </avoidCallsTo>
                         <outputFormats>
                             <param>HTML</param>
