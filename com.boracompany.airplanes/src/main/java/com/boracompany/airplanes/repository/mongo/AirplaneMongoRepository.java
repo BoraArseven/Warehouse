@@ -1,7 +1,7 @@
 package com.boracompany.airplanes.repository.mongo;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 import org.bson.Document;
 
@@ -27,8 +27,11 @@ public class AirplaneMongoRepository implements AirplaneRepository {
     @Override
     public List<Airplane> findAll() {
 
-        return StreamSupport.stream(airplaneCollection.find().spliterator(), false).map(this::fromDocumentToAirplane)
-                .toList();
+        List<Airplane> airplanes = new ArrayList<>();
+        for (Document doc : airplaneCollection.find()) {
+            airplanes.add(fromDocumentToAirplane(doc));
+        }
+        return airplanes;
 
     }
 
