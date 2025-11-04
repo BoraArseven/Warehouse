@@ -89,7 +89,7 @@ class WarehouseControllerTest {
         Airplane airplanetoDelete = new Airplane("1", "test");
         when(airplaneRepository.findById("1")).thenReturn(null);
         warehouseController.deleteAirplane(airplanetoDelete);
-        verify(airplaneView).showErrorAirplaneNotFound("No existing student with id 1", airplanetoDelete);
+        verify(airplaneView).showErrorAirplaneNotFound("No existing airplane with id 1", airplanetoDelete);
     }
 
     @Test
@@ -97,7 +97,7 @@ class WarehouseControllerTest {
         Airplane airplanetoDelete = new Airplane("2", "test");
         when(airplaneRepository.findById("2")).thenReturn(null);
         warehouseController.deleteAirplane(airplanetoDelete);
-        verify(airplaneView).showErrorAirplaneNotFound("No existing student with id 2", airplanetoDelete);
+        verify(airplaneView).showErrorAirplaneNotFound("No existing airplane with id 2", airplanetoDelete);
     }
 
 }

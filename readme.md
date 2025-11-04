@@ -1,6 +1,6 @@
 Simple warehouse application
 
-To run, please run the start.sh with administrator privileges.
+To run, please run the start.sh with administrator privileges. It will also build the app if target jar does not exist.
 
 Requirements:
 Java 17, and Docker with compose installed.
