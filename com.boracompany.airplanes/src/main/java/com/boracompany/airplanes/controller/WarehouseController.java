@@ -34,7 +34,7 @@ public class WarehouseController {
     public void deleteAirplane(Airplane airplanetoDelete) {
         if (airplaneRepository.findById(airplanetoDelete.getId()) == null) {
 
-            airplaneView.showErrorAirplaneNotFound("No existing student with id " + airplanetoDelete.getId(),
+            airplaneView.showErrorAirplaneNotFound("No existing airplane with id " + airplanetoDelete.getId(),
                     airplanetoDelete);
             return;
         }

@@ -149,8 +149,8 @@ public class AirplaneSwingView extends JFrame implements AirplaneView {
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected,
                     boolean cellHasFocus) {
-                Airplane student = (Airplane) value;
-                return super.getListCellRendererComponent(list, getDisplayString(student), index, isSelected,
+                Airplane airplane = (Airplane) value;
+                return super.getListCellRendererComponent(list, getDisplayString(airplane), index, isSelected,
                         cellHasFocus);
             }
         });

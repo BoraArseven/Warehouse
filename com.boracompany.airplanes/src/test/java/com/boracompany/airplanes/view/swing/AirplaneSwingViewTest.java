@@ -161,9 +161,9 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
         Airplane airplane1 = new Airplane("1", "test1");
         Airplane airplane2 = new Airplane("2", "test2");
         GuiActionRunner.execute(() -> {
-            DefaultListModel<Airplane> listStudentsModel = airplaneSwingView.getListAirplanesModel();
-            listStudentsModel.addElement(airplane1);
-            listStudentsModel.addElement(airplane2);
+            DefaultListModel<Airplane> listAirplanesModel = airplaneSwingView.getListAirplanesModel();
+            listAirplanesModel.addElement(airplane1);
+            listAirplanesModel.addElement(airplane2);
         });
         // execute
         GuiActionRunner.execute(() -> airplaneSwingView.airplaneRemoved(new Airplane("1", "test1")));
@@ -174,7 +174,7 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
     }
 
     @Test
-    public void testAddButtonShouldDelegateToSchoolControllerNewStudent() {
+    public void testAddButtonShouldDelegateToSchoolControllerNewAirplane() {
         window.textBox("idTextBox").enterText("1");
         window.textBox("modelTextBox").enterText("test");
         window.button(JButtonMatcher.withText("Add")).click();
@@ -182,13 +182,13 @@ public class AirplaneSwingViewTest extends AssertJSwingJUnitTestCase {
     }
 
     @Test
-    public void testDeleteButtonShouldDelegateToSchoolControllerDeleteStudent() {
+    public void testDeleteButtonShouldDelegateToSchoolControllerDeleteAirplane() {
         Airplane airplane1 = new Airplane("1", "test1");
         Airplane airplane2 = new Airplane("2", "test2");
         GuiActionRunner.execute(() -> {
-            DefaultListModel<Airplane> listStudentsModel = airplaneSwingView.getListAirplanesModel();
-            listStudentsModel.addElement(airplane1);
-            listStudentsModel.addElement(airplane2);
+            DefaultListModel<Airplane> listAirplanesModel = airplaneSwingView.getListAirplanesModel();
+            listAirplanesModel.addElement(airplane1);
+            listAirplanesModel.addElement(airplane2);
         });
         window.list("airplaneList").selectItem(1);
         window.button(JButtonMatcher.withText("Delete")).click();

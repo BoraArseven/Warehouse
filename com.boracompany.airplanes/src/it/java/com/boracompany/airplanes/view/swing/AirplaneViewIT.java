@@ -115,9 +115,7 @@ public class AirplaneViewIT extends AssertJSwingJUnitTestCase {
     @Test
     @GUITest
     public void testDeleteButtonSuccess() {
-        // use the controller to populate the view's list...
         GuiActionRunner.execute(() -> warehouseController.newAirplane(new Airplane("1", "toremove")));
-        // ...with a student to select
         window.list().selectItem(0);
         window.button(JButtonMatcher.withText("Delete")).click();
         assertThat(window.list().contents()).isEmpty();
@@ -126,12 +124,11 @@ public class AirplaneViewIT extends AssertJSwingJUnitTestCase {
     @Test
     @GUITest
     public void testDeleteButtonError() {
-        // manually add a student to the list, which will not be in the db
         Airplane airplane = new Airplane("1", "non existent");
         GuiActionRunner.execute(() -> airplaneSwingView.getListAirplanesModel().addElement(airplane));
         window.list().selectItem(0);
         window.button(JButtonMatcher.withText("Delete")).click();
         assertThat(window.list().contents()).isEmpty();
-        window.label("errorLabel").requireText("No existing student with id 1: 1 - non existent");
+        window.label("errorLabel").requireText("No existing airplane with id 1: 1 - non existent");
     }
 }
